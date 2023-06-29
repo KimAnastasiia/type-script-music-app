@@ -46,8 +46,8 @@ let MyPlayListComponent= () => {
         <Title>Your playlist</Title>
             <Row justify="center" style={{marginTop:70}}>
                 {listSongs.map((el)=>
-                    <Col style={{width: 300,height:600, margin:20}}>
-                        <div style={{ width:300, height:500,  backgroundColor:"#fff", boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", display:"flex", flexDirection:"column", justifyContent:"space-between" }} >
+                    <Col style={{width: 300, margin:20}}>
+                        <div style={{ width:300, height:550,  backgroundColor:"#fff", boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", display:"flex", flexDirection:"column", justifyContent:"space-between" }} >
                             <div>
                                 <img  src={el?.urlImg } style={{width:300, height:300}}/>
                                 <div className="song-details">
