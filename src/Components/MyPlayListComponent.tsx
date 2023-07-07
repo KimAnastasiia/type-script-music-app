@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { Col, Button , Row, Typography  } from 'antd';
 import Commons from "../Utility/Commons";
-
+import { useNavigate   } from "react-router-dom";
 export interface ListOfMySongs {
     song:string,
     releaseDate:string,
@@ -16,7 +16,7 @@ let MyPlayListComponent= () => {
 
     let [listSongs, setListSongs]=useState<ListOfMySongs[]>([])
     const apiKey = localStorage.getItem('apiKey');
-    
+    const navigate  = useNavigate();
     useEffect(() => {
         getPlayList()
     }, [])
@@ -43,7 +43,9 @@ let MyPlayListComponent= () => {
     }
     return(
         <div>
-        <Title>Your playlist</Title>
+           { listSongs.length>0  &&
+           <>
+            <Title>Your playlist</Title>
             <Row justify="center" style={{marginTop:70}}>
                 {listSongs.map((el)=>
                     <Col style={{width: 300, margin:20}}>
@@ -64,6 +66,14 @@ let MyPlayListComponent= () => {
                     </Col>
                 )}
             </Row>
+            </>}
+            { listSongs.length==0  &&
+           <>
+            <Title>Your playlist is empty yet</Title>
+            <Row justify="center">
+                <Button onClick={()=>{navigate("/")}} style={{backgroundColor:"#18CAF0", color:"white"}}>Add songs to your playlist</Button>
+            </Row>
+            </>}
         </div>
     )
 
